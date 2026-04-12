@@ -12,6 +12,7 @@ namespace EjemploAdmonTi.Models
           (DbContextOptions<AppDbContext> options) 
             : base(options)
         {
+
         }
     }
 }
