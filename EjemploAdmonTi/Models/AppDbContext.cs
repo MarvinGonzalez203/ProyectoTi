@@ -14,6 +14,9 @@ namespace EjemploAdmonTi.Models
         {
 
         }
+
+        public DbSet<Persona> Personas { get; set; }
+
     }
 }
 

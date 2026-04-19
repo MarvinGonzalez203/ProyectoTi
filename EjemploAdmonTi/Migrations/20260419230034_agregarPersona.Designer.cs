@@ -4,6 +4,7 @@ using EjemploAdmonTi.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EjemploAdmonTi.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260419230034_agregarPersona")]
+    partial class agregarPersona
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,8 +43,11 @@ namespace EjemploAdmonTi.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
-                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("usuarioId")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("PersonaId");
 
@@ -256,9 +262,7 @@ namespace EjemploAdmonTi.Migrations
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "User")
                         .WithMany()
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("UserId");
 
                     b.Navigation("User");
                 });
