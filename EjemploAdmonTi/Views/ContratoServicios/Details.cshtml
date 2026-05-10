@@ -1,0 +1,54 @@
+﻿@model ContratoServicio
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>ContratoServicio</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaInicio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaInicio)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaFin)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaFin)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MontoImplementacion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MontoImplementacion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MontoMensual)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MontoMensual)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EstadoContrato)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EstadoContrato)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ProveedorTecnologico)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ProveedorTecnologico.IdProveedor)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdContrato">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

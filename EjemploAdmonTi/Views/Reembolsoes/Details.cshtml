@@ -1,0 +1,42 @@
+﻿@model Reembolso
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Reembolso</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MontoReembolso)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MontoReembolso)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EstadoReembolso)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EstadoReembolso)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaReembolso)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaReembolso)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Devolucion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Devolucion.IdDevolucion)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdReembolso">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

@@ -1,0 +1,42 @@
+﻿@model Devolucion
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Devolucion</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.MotivoDevolucion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.MotivoDevolucion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FechaDevolucion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FechaDevolucion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EstadoDevolucion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EstadoDevolucion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Pedido)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Pedido.IdPedido)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdDevolucion">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

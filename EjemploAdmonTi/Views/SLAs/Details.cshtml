@@ -1,0 +1,48 @@
+﻿@model SLA
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>SLA</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Prioridad)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Prioridad)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TiempoRespuesta)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TiempoRespuesta)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.TiempoResolucion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.TiempoResolucion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ContratoServicio)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ContratoServicio.IdContrato)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.IdSLA">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
