@@ -1,8 +1,276 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Panel principal";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<style>
+    body {
+        background-color: #f5f6fa;
+    }
+
+    .dashboard-container {
+        display: grid;
+        grid-template-columns: 280px 1fr;
+        gap: 25px;
+        min-height: 80vh;
+    }
+
+    .sidebar-dashboard {
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 20px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        height: fit-content;
+    }
+
+        .sidebar-dashboard h4 {
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .sidebar-dashboard a {
+            display: block;
+            text-decoration: none;
+            color: #212529;
+            padding: 11px 14px;
+            border-radius: 10px;
+            margin-bottom: 6px;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+            .sidebar-dashboard a:hover {
+                background: #0d6efd;
+                color: white;
+            }
+
+        .sidebar-dashboard i {
+            margin-right: 8px;
+        }
+
+    .dashboard-main {
+        background: #ffffff;
+        border-radius: 18px;
+        padding: 35px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+
+    .top-dashboard {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 30px;
+        gap: 20px;
+    }
+
+    .search-box {
+        max-width: 500px;
+        width: 100%;
+    }
+
+    .banner-dashboard {
+        background: linear-gradient(135deg, #4f46e5, #7c3aed);
+        color: white;
+        border-radius: 22px;
+        padding: 50px;
+        margin-bottom: 35px;
+    }
+
+        .banner-dashboard h1 {
+            font-size: 46px;
+            font-weight: bold;
+        }
+
+        .banner-dashboard p {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+    .card-module {
+        background: white;
+        border-radius: 16px;
+        padding: 24px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        transition: 0.2s;
+        height: 100%;
+        border: 1px solid #eee;
+    }
+
+        .card-module:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-module i {
+            font-size: 38px;
+            color: #0d6efd;
+            margin-bottom: 15px;
+        }
+
+        .card-module h5 {
+            font-weight: bold;
+        }
+</style>
+
+<div class="dashboard-container">
+
+    <aside class="sidebar-dashboard">
+        <h4>
+            <i class="bi bi-grid-fill"></i> Menú principal
+        </h4>
+
+        <a asp-controller="Home" asp-action="Index">
+            <i class="bi bi-house-door-fill"></i> Inicio
+        </a>
+
+        <a asp-controller="Clientes" asp-action="Index">
+            <i class="bi bi-people-fill"></i> Clientes
+        </a>
+
+        <a asp-controller="Productoes" asp-action="Index">
+            <i class="bi bi-box-seam"></i> Productos
+        </a>
+
+        <a asp-controller="Tiendas" asp-action="Index">
+            <i class="bi bi-shop"></i> Tiendas
+        </a>
+
+        <a asp-controller="Bodegas" asp-action="Index">
+            <i class="bi bi-building"></i> Bodegas
+        </a>
+
+        <a asp-controller="Inventarios" asp-action="Index">
+            <i class="bi bi-clipboard-data-fill"></i> Inventarios
+        </a>
+
+        <a asp-controller="Pedidoes" asp-action="Index">
+            <i class="bi bi-cart-fill"></i> Pedidos
+        </a>
+
+        <a asp-controller="DetallePedidoes" asp-action="Index">
+            <i class="bi bi-list-ul"></i> Detalle pedidos
+        </a>
+
+        <a asp-controller="Pagos" asp-action="Index">
+            <i class="bi bi-cash-coin"></i> Pagos
+        </a>
+
+        <a asp-controller="Entregas" asp-action="Index">
+            <i class="bi bi-truck"></i> Entregas
+        </a>
+
+        <a asp-controller="Devolucions" asp-action="Index">
+            <i class="bi bi-arrow-counterclockwise"></i> Devoluciones
+        </a>
+
+        <a asp-controller="Reembolsoes" asp-action="Index">
+            <i class="bi bi-wallet2"></i> Reembolsos
+        </a>
+
+        <a asp-controller="Promocions" asp-action="Index">
+            <i class="bi bi-tags-fill"></i> Promociones
+        </a>
+
+        <a asp-controller="ProductoPromocions" asp-action="Index">
+            <i class="bi bi-percent"></i> Producto promociones
+        </a>
+
+        <a asp-controller="CanalVentas" asp-action="Index">
+            <i class="bi bi-diagram-3-fill"></i> Canales de venta
+        </a>
+
+        <a asp-controller="ReservaStocks" asp-action="Index">
+            <i class="bi bi-box-arrow-in-down"></i> Reservas de stock
+        </a>
+
+        <a asp-controller="MovimientoInventarios" asp-action="Index">
+            <i class="bi bi-arrow-left-right"></i> Movimientos inventario
+        </a>
+
+        <a asp-controller="ProveedorTecnologicoes" asp-action="Index">
+            <i class="bi bi-hdd-network-fill"></i> Proveedores tecnológicos
+        </a>
+
+        <a asp-controller="ContratoServicios" asp-action="Index">
+            <i class="bi bi-file-earmark-text-fill"></i> Contratos de servicio
+        </a>
+
+        <a asp-controller="SLAs" asp-action="Index">
+            <i class="bi bi-clock-history"></i> SLA
+        </a>
+
+        <a asp-controller="Incidentes" asp-action="Index">
+            <i class="bi bi-exclamation-triangle-fill"></i> Incidentes
+        </a>
+
+        <a asp-controller="TicketSoportes" asp-action="Index">
+            <i class="bi bi-ticket-detailed-fill"></i> Tickets soporte
+        </a>
+
+        <a asp-controller="Personas" asp-action="Index">
+            <i class="bi bi-person-badge-fill"></i> Personas
+        </a>
+    </aside>
+
+    <section class="dashboard-main">
+
+        <div class="top-dashboard">
+            <div>
+                <h1 class="fw-bold">Bienvenido</h1>
+                <p class="text-muted">Panel administrativo de Supermercados El Ahorro</p>
+            </div>
+
+            <div class="search-box">
+                <input type="text" class="form-control" placeholder="Buscar módulo...">
+            </div>
+        </div>
+
+        <div class="banner-dashboard">
+            <h1>Administra tu sistema</h1>
+            <p>Gestiona clientes, productos, pedidos, inventario y promociones desde un solo lugar.</p>
+
+            <a asp-controller="Clientes" asp-action="Index" class="btn btn-light mt-3">
+                <i class="bi bi-arrow-right-circle-fill"></i> Ir a clientes
+            </a>
+        </div>
+
+        <h4 class="mb-4 fw-bold">Módulos recomendados</h4>
+
+        <div class="row g-4">
+
+            <div class="col-md-4">
+                <div class="card-module">
+                    <i class="bi bi-people-fill"></i>
+                    <h5>Clientes</h5>
+                    <p class="text-muted">Registra y administra los clientes del supermercado.</p>
+                    <a asp-controller="Clientes" asp-action="Index" class="btn btn-primary btn-sm">
+                        <i class="bi bi-folder2-open"></i> Abrir módulo
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card-module">
+                    <i class="bi bi-box-seam"></i>
+                    <h5>Productos</h5>
+                    <p class="text-muted">Consulta y administra los productos disponibles.</p>
+                    <a asp-controller="Productoes" asp-action="Index" class="btn btn-primary btn-sm">
+                        <i class="bi bi-folder2-open"></i> Abrir módulo
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card-module">
+                    <i class="bi bi-cart-fill"></i>
+                    <h5>Pedidos</h5>
+                    <p class="text-muted">Gestiona pedidos realizados por los clientes.</p>
+                    <a asp-controller="Pedidoes" asp-action="Index" class="btn btn-primary btn-sm">
+                        <i class="bi bi-folder2-open"></i> Abrir módulo
+                    </a>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
 </div>
