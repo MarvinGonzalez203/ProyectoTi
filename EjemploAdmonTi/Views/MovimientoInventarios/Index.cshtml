@@ -1,59 +1,66 @@
 ﻿@model IEnumerable<MovimientoInventario>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Movimientos de inventario";
 }
 
-<h1>Index</h1>
+<h1>Movimientos de inventario</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary mb-3">
+        <i class="bi bi-arrow-left-right"></i> Crear nuevo movimiento
+    </a>
 </p>
-<table class="table">
-    <thead>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.TipoMovimiento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cantidad)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Motivo)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaMovimiento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Inventario)
-            </th>
-            <th></th>
+            <th>Inventario</th>
+            <th>Tipo de movimiento</th>
+            <th>Cantidad</th>
+            <th>Motivo</th>
+            <th>Fecha de movimiento</th>
+            <th>Acciones</th>
         </tr>
     </thead>
+
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoMovimiento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cantidad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Motivo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaMovimiento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Inventario.IdInventario)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdMovimiento">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdMovimiento">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdMovimiento">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.Inventario != null)
+                    {
+                        @("Inventario #" + item.Inventario.IdInventario)
+                    }
+                    else
+                    {
+                        @item.IdInventario
+                    }
+                </td>
+
+                <td>@Html.DisplayFor(modelItem => item.TipoMovimiento)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.Cantidad)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.Motivo)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.FechaMovimiento)</td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdMovimiento" class="btn btn-warning btn-sm">
+                        <i class="bi bi-pencil-square"></i> Editar
+                    </a>
+
+                    <a asp-action="Details" asp-route-id="@item.IdMovimiento" class="btn btn-info btn-sm">
+                        <i class="bi bi-eye-fill"></i> Detalles
+                    </a>
+
+                    <a asp-action="Delete" asp-route-id="@item.IdMovimiento" class="btn btn-danger btn-sm">
+                        <i class="bi bi-trash-fill"></i> Eliminar
+                    </a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -1,53 +1,54 @@
-﻿@model IEnumerable<EjemploAdmonTi.Models.ProveedorTecnologico>
+﻿@model IEnumerable<ProveedorTecnologico>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Proveedores tecnológicos";
 }
 
-<h1>Index</h1>
+<h1>Proveedores tecnológicos</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary mb-3">
+        <i class="bi bi-hdd-network-fill"></i> Crear nuevo proveedor
+    </a>
 </p>
-<table class="table">
-    <thead>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NombreProveedor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ServicioProveedor)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CorreoContacto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefono)
-            </th>
-            <th></th>
+            <th>Nombre del proveedor</th>
+            <th>Servicio del proveedor</th>
+            <th>Correo de contacto</th>
+            <th>Teléfono</th>
+            <th>Acciones</th>
         </tr>
     </thead>
+
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreProveedor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ServicioProveedor)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CorreoContacto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdProveedor">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdProveedor">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdProveedor">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.NombreProveedor)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.ServicioProveedor)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.CorreoContacto)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.Telefono)</td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdProveedor" class="btn btn-warning btn-sm">
+                        <i class="bi bi-pencil-square"></i> Editar
+                    </a>
+
+                    <a asp-action="Details" asp-route-id="@item.IdProveedor" class="btn btn-info btn-sm">
+                        <i class="bi bi-eye-fill"></i> Detalles
+                    </a>
+
+                    <a asp-action="Delete" asp-route-id="@item.IdProveedor" class="btn btn-danger btn-sm">
+                        <i class="bi bi-trash-fill"></i> Eliminar
+                    </a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

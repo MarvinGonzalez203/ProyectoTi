@@ -1,53 +1,54 @@
 ﻿@model IEnumerable<Tienda>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Tiendas";
 }
 
-<h1>Index</h1>
+<h1>Tiendas</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary mb-3">
+        <i class="bi bi-shop"></i> Crear nueva tienda
+    </a>
 </p>
-<table class="table">
-    <thead>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NombreTienda)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Direccion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefono)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Estado)
-            </th>
-            <th></th>
+            <th>Nombre de la tienda</th>
+            <th>Dirección</th>
+            <th>Teléfono</th>
+            <th>Estado</th>
+            <th>Acciones</th>
         </tr>
     </thead>
+
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreTienda)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Direccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Estado)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdTienda">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdTienda">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdTienda">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.NombreTienda)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.Direccion)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.Telefono)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.Estado)</td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdTienda" class="btn btn-warning btn-sm">
+                        <i class="bi bi-pencil-square"></i> Editar
+                    </a>
+
+                    <a asp-action="Details" asp-route-id="@item.IdTienda" class="btn btn-info btn-sm">
+                        <i class="bi bi-eye-fill"></i> Detalles
+                    </a>
+
+                    <a asp-action="Delete" asp-route-id="@item.IdTienda" class="btn btn-danger btn-sm">
+                        <i class="bi bi-trash-fill"></i> Eliminar
+                    </a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

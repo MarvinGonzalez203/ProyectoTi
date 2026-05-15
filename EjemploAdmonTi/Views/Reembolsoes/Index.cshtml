@@ -1,53 +1,63 @@
 ﻿@model IEnumerable<Reembolso>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Reembolsos";
 }
 
-<h1>Index</h1>
+<h1>Reembolsos</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary mb-3">
+        <i class="bi bi-wallet2"></i> Crear nuevo reembolso
+    </a>
 </p>
-<table class="table">
-    <thead>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.MontoReembolso)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EstadoReembolso)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaReembolso)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Devolucion)
-            </th>
-            <th></th>
+            <th>Devolución</th>
+            <th>Monto del reembolso</th>
+            <th>Estado del reembolso</th>
+            <th>Fecha del reembolso</th>
+            <th>Acciones</th>
         </tr>
     </thead>
+
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MontoReembolso)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EstadoReembolso)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaReembolso)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Devolucion.IdDevolucion)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdReembolso">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdReembolso">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdReembolso">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.Devolucion != null)
+                    {
+                        @("Devolución #" + item.Devolucion.IdDevolucion)
+                    }
+                    else
+                    {
+                        @item.IdDevolucion
+                    }
+                </td>
+
+                <td>Q @item.MontoReembolso.ToString("N2")</td>
+
+                <td>@Html.DisplayFor(modelItem => item.EstadoReembolso)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.FechaReembolso)</td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdReembolso" class="btn btn-warning btn-sm">
+                        <i class="bi bi-pencil-square"></i> Editar
+                    </a>
+
+                    <a asp-action="Details" asp-route-id="@item.IdReembolso" class="btn btn-info btn-sm">
+                        <i class="bi bi-eye-fill"></i> Detalles
+                    </a>
+
+                    <a asp-action="Delete" asp-route-id="@item.IdReembolso" class="btn btn-danger btn-sm">
+                        <i class="bi bi-trash-fill"></i> Eliminar
+                    </a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

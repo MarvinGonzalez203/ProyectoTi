@@ -1,59 +1,66 @@
 ﻿@model IEnumerable<Pago>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Pagos";
 }
 
-<h1>Index</h1>
+<h1>Pagos</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary mb-3">
+        <i class="bi bi-cash-coin"></i> Crear nuevo pago
+    </a>
 </p>
-<table class="table">
-    <thead>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.MetodoPago)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MontoPagado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EstadoPago)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaPago)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Pedido)
-            </th>
-            <th></th>
+            <th>Pedido</th>
+            <th>Método de pago</th>
+            <th>Monto pagado</th>
+            <th>Estado del pago</th>
+            <th>Fecha de pago</th>
+            <th>Acciones</th>
         </tr>
     </thead>
+
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.MetodoPago)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MontoPagado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EstadoPago)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaPago)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pedido.IdPedido)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdPago">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdPago">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdPago">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.Pedido != null)
+                    {
+                        @("Pedido #" + item.Pedido.IdPedido)
+                    }
+                    else
+                    {
+                        @item.IdPedido
+                    }
+                </td>
+
+                <td>@Html.DisplayFor(modelItem => item.MetodoPago)</td>
+
+                <td>Q @item.MontoPagado.ToString("N2")</td>
+
+                <td>@Html.DisplayFor(modelItem => item.EstadoPago)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.FechaPago)</td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdPago" class="btn btn-warning btn-sm">
+                        <i class="bi bi-pencil-square"></i> Editar
+                    </a>
+
+                    <a asp-action="Details" asp-route-id="@item.IdPago" class="btn btn-info btn-sm">
+                        <i class="bi bi-eye-fill"></i> Detalles
+                    </a>
+
+                    <a asp-action="Delete" asp-route-id="@item.IdPago" class="btn btn-danger btn-sm">
+                        <i class="bi bi-trash-fill"></i> Eliminar
+                    </a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

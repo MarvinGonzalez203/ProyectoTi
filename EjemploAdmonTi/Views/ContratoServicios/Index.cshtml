@@ -1,65 +1,69 @@
 ﻿@model IEnumerable<ContratoServicio>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Contratos de servicio";
 }
 
-<h1>Index</h1>
+<h1>Contratos de servicio</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary mb-3">
+        <i class="bi bi-file-earmark-plus-fill"></i> Crear nuevo contrato
+    </a>
 </p>
-<table class="table">
-    <thead>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaInicio)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaFin)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MontoImplementacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.MontoMensual)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EstadoContrato)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ProveedorTecnologico)
-            </th>
-            <th></th>
+            <th>Proveedor</th>
+            <th>Fecha de inicio</th>
+            <th>Fecha de fin</th>
+            <th>Monto implementación</th>
+            <th>Monto mensual</th>
+            <th>Estado del contrato</th>
+            <th>Acciones</th>
         </tr>
     </thead>
+
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaInicio)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaFin)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MontoImplementacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MontoMensual)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EstadoContrato)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ProveedorTecnologico.IdProveedor)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdContrato">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdContrato">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdContrato">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.ProveedorTecnologico != null)
+                    {
+                        @item.ProveedorTecnologico.NombreProveedor
+                    }
+                    else
+                    {
+                        @item.IdProveedor
+                    }
+                </td>
+
+                <td>@Html.DisplayFor(modelItem => item.FechaInicio)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.FechaFin)</td>
+
+                <td>Q @item.MontoImplementacion.ToString("N2")</td>
+
+                <td>Q @item.MontoMensual.ToString("N2")</td>
+
+                <td>@Html.DisplayFor(modelItem => item.EstadoContrato)</td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdContrato" class="btn btn-warning btn-sm">
+                        <i class="bi bi-pencil-square"></i> Editar
+                    </a>
+
+                    <a asp-action="Details" asp-route-id="@item.IdContrato" class="btn btn-info btn-sm">
+                        <i class="bi bi-eye-fill"></i> Detalles
+                    </a>
+
+                    <a asp-action="Delete" asp-route-id="@item.IdContrato" class="btn btn-danger btn-sm">
+                        <i class="bi bi-trash-fill"></i> Eliminar
+                    </a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

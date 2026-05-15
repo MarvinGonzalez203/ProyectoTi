@@ -1,20 +1,19 @@
 ﻿@page
 @model RegisterModel
 @{
-    ViewData["Title"] = "Register";
+    ViewData["Title"] = "Registro";
     Layout = null;
 }
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
-
-<!-- Mirrored from www.bootstrapdash.com/demo/star-admin2-pro/template/demo/horizontal-default-dark/pages/samples/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 31 Oct 2021 15:04:42 GMT -->
 <head>
-    <!-- Required meta tags -->
+    <!-- Meta etiquetas requeridas -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Star Admin2  Pro Premium Bootstrap Admin Dashboard Template</title>
+    <title>Registro - EjemploAdmonTi</title>
+
     <!-- plugins:css -->
     <link rel="stylesheet" href="~/vendors/feather/feather.css">
     <link rel="stylesheet" href="~/vendors/mdi/css/materialdesignicons.min.css">
@@ -23,11 +22,10 @@
     <link rel="stylesheet" href="~/vendors/simple-line-icons/css/simple-line-icons.css">
     <link rel="stylesheet" href="~/vendors/css/vendor.bundle.base.css">
     <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <!-- End plugin css for this page -->
     <!-- inject:css -->
     <link rel="stylesheet" href="~/css/horizontal-layout-dark/style.css">
     <!-- endinject -->
+
     <link rel="shortcut icon" href="~/images/favicon.png" />
 </head>
 
@@ -39,32 +37,43 @@
                     <div class="row w-100 mx-0">
                         <div class="col-lg-4 mx-auto">
                             <div class="auth-form-light text-left py-5 px-4 px-sm-5">
+
                                 <div class="brand-logo">
                                     <img src="~/images/logo.svg" alt="logo">
                                 </div>
-                                <h4>New here?</h4>
-                                <h6 class="fw-light">Signing up is easy. It only takes a few steps</h6>
+
+                                <h4>¿Eres nuevo?</h4>
+                                <h6 class="fw-light">Registrarse es fácil. Solo toma unos pasos.</h6>
+
                                 <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
-                                    <h2>Create a new account.</h2>
+                                    <h2>Crear una nueva cuenta</h2>
                                     <hr />
+
                                     <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+
                                     <div class="form-floating mb-3">
-                                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
-                                        <label asp-for="Input.Email">Email</label>
+                                        <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="nombre@ejemplo.com" />
+                                        <label asp-for="Input.Email">Correo electrónico</label>
                                         <span asp-validation-for="Input.Email" class="text-danger"></span>
                                     </div>
+
                                     <div class="form-floating mb-3">
-                                        <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                                        <label asp-for="Input.Password">Password</label>
+                                        <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="contraseña" />
+                                        <label asp-for="Input.Password">Contraseña</label>
                                         <span asp-validation-for="Input.Password" class="text-danger"></span>
                                     </div>
+
                                     <div class="form-floating mb-3">
-                                        <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
-                                        <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                                        <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="confirmar contraseña" />
+                                        <label asp-for="Input.ConfirmPassword">Confirmar contraseña</label>
                                         <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
                                     </div>
-                                    <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+
+                                    <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">
+                                        Registrarse
+                                    </button>
                                 </form>
+
                             </div>
                         </div>
                     </div>
@@ -79,8 +88,6 @@
     <script src="~/vendors/js/vendor.bundle.base.js"></script>
     <script src="~/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
     <!-- endinject -->
-    <!-- Plugin js for this page -->
-    <!-- End plugin js for this page -->
     <!-- inject:js -->
     <script src="~/js/off-canvas.js"></script>
     <script src="~/js/hoverable-collapse.js"></script>
@@ -88,14 +95,8 @@
     <script src="~/js/settings.js"></script>
     <script src="~/js/todolist.js"></script>
     <!-- endinject -->
+
+    <partial name="_ValidationScriptsPartial" />
 </body>
 
-
-<!-- Mirrored from www.bootstrapdash.com/demo/star-admin2-pro/template/demo/horizontal-default-dark/pages/samples/register.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 31 Oct 2021 15:04:42 GMT -->
 </html>
-
-
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}

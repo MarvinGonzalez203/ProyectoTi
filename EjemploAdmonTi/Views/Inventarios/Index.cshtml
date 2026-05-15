@@ -1,65 +1,87 @@
 ﻿@model IEnumerable<Inventario>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Inventarios";
 }
 
-<h1>Index</h1>
+<h1>Inventarios</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary mb-3">
+        <i class="bi bi-clipboard-data-fill"></i> Crear nuevo inventario
+    </a>
 </p>
-<table class="table">
-    <thead>
+
+<table class="table table-bordered table-striped">
+    <thead class="table-dark">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.StockDisponible)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.StockReservado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaActualizacion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Producto)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tienda)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Bodega)
-            </th>
-            <th></th>
+            <th>Producto</th>
+            <th>Tienda</th>
+            <th>Bodega</th>
+            <th>Stock disponible</th>
+            <th>Stock reservado</th>
+            <th>Fecha de actualización</th>
+            <th>Acciones</th>
         </tr>
     </thead>
+
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.StockDisponible)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.StockReservado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaActualizacion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Producto.IdProducto)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Tienda.IdTienda)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bodega.IdBodega)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdInventario">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdInventario">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdInventario">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @if (item.Producto != null)
+                    {
+                        @item.Producto.NombreProducto
+                    }
+                    else
+                    {
+                        @item.IdProducto
+                    }
+                </td>
+
+                <td>
+                    @if (item.Tienda != null)
+                    {
+                        @item.Tienda.NombreTienda
+                    }
+                    else
+                    {
+                        @item.IdTienda
+                    }
+                </td>
+
+                <td>
+                    @if (item.Bodega != null)
+                    {
+                        @item.Bodega.NombreBodega
+                    }
+                    else
+                    {
+                        @item.IdBodega
+                    }
+                </td>
+
+                <td>@Html.DisplayFor(modelItem => item.StockDisponible)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.StockReservado)</td>
+
+                <td>@Html.DisplayFor(modelItem => item.FechaActualizacion)</td>
+
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdInventario" class="btn btn-warning btn-sm">
+                        <i class="bi bi-pencil-square"></i> Editar
+                    </a>
+
+                    <a asp-action="Details" asp-route-id="@item.IdInventario" class="btn btn-info btn-sm">
+                        <i class="bi bi-eye-fill"></i> Detalles
+                    </a>
+
+                    <a asp-action="Delete" asp-route-id="@item.IdInventario" class="btn btn-danger btn-sm">
+                        <i class="bi bi-trash-fill"></i> Eliminar
+                    </a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
